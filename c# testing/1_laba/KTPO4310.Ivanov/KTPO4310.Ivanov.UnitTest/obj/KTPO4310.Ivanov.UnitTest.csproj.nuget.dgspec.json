@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj": {}
+    "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj": {}
   },
   "projects": {
-    "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj": {
+    "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
         "projectName": "KTPO4310.Ivanov.Lib",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
+        "projectPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
         "packagesPath": "C:\\Users\\macbookair\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\obj\\",
+        "outputPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\macbookair\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,14 +59,14 @@
         }
       }
     },
-    "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj": {
+    "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
         "projectName": "KTPO4310.Ivanov.UnitTest",
-        "projectPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
+        "projectPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
         "packagesPath": "C:\\Users\\macbookair\\.nuget\\packages\\",
-        "outputPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\obj\\",
+        "outputPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\macbookair\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +83,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj": {
-                "projectPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj"
+              "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj": {
+                "projectPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj"
               }
             }
           }

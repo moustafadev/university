@@ -7,10 +7,20 @@
 
 (defun UF(n x)(if (plusp n) (* x (UF (- n 1) x))1))
 
+
+
+
+(defun wr ()
 (setq my_file (open "//Mac/Home/Desktop/university/lisp/outdata.txt"
   :direction :output))
-(setq s (UF 4 2))
+(princ "Enter N : ")
+(setq n (read))
+(princ "Enter X : ")
+(setq x (read))
+(setq s (UF n x))
 (princ s my_file)
 (terpri my_file)
-(close my_file) 
+(close my_file)
+
+)
 

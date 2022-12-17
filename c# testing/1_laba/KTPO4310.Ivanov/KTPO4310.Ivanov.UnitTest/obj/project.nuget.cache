@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cJQXfF+l0+5B0LhptLNp8zeySo7BCTDNrnfKG4sfxHsIsMXCxP/7h3DKUHluqfl33wYAUPl1+IL8nOK9zep4Mg==",
+  "dgSpecHash": "Sf+rdrzkY2ev9qRORRfV2DIzZD89p1hfCxqyIOZ/HT4siIYD8YtVoCmXlg/jZnmw4aQ3RwsOgaclhcOdquED/w==",
   "success": true,
-  "projectFilePath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
+  "projectFilePath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.UnitTest\\KTPO4310.Ivanov.UnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\macbookair\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\macbookair\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

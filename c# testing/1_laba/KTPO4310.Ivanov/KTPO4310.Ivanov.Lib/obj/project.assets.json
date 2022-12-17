@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
+      "projectUniqueName": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
       "projectName": "KTPO4310.Ivanov.Lib",
-      "projectPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
+      "projectPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\KTPO4310.Ivanov.Lib.csproj",
       "packagesPath": "C:\\Users\\macbookair\\.nuget\\packages\\",
-      "outputPath": "\\\\Mac\\Home\\Desktop\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\obj\\",
+      "outputPath": "\\\\Mac\\Home\\Desktop\\university\\c# testing\\1_laba\\KTPO4310.Ivanov\\KTPO4310.Ivanov.Lib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\macbookair\\AppData\\Roaming\\NuGet\\NuGet.Config",
