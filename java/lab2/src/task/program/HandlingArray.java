@@ -1,8 +1,8 @@
 package task.program;
 
 import task.exceptions.ArrayEqualElementsException;
+import task.exceptions.ArrayMoreThanNumberElementsException;
 import task.exceptions.ArrayLessElementsException;
-import task.exceptions.ArrayMoreElementsException;
 import task.interfaces.IHandlingArrayException;
 import task.interfaces.IParameters;
 
@@ -10,19 +10,19 @@ import java.util.ArrayList;
 
 public class HandlingArray implements IHandlingArrayException, IParameters {
     @Override
-    public ArrayList<Integer> processParameters(String[] args) throws ArrayMoreElementsException, ArrayEqualElementsException, ArrayLessElementsException {
-        if(args.length > numberOfParameter){
-            throw new ArrayMoreElementsException();
+    public ArrayList<Integer> processParameters(String[] args) throws ArrayLessElementsException, ArrayEqualElementsException, ArrayMoreThanNumberElementsException {
+        if(args.length < numberOfParameter){
+            throw new ArrayLessElementsException();
         }
         if(args.length == numberOfParameter){
             throw new ArrayEqualElementsException();
         }
 
-        if(args.length < numberOfParameter){
-            throw new ArrayLessElementsException();
-        }
         ArrayList<Integer> arrayList = new ArrayList();
         for(String item : args){
+            if(Integer.parseInt(item) > numberOfParameter){
+                throw new ArrayMoreThanNumberElementsException();
+            }
             arrayList.add(Integer.parseInt(item));
         }
 

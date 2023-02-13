@@ -2,19 +2,20 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> arrOld = new ArrayList<>();
-        ArrayList<Integer> arrEven = new ArrayList<>();
-        for(int i=0;i<args.length;i++){
-            int number = Integer.parseInt(args[i]);
-            if (number % 2 == 0) {
-                if(number >0)
-                    arrOld.add(number);
+        int sumOld=0;
+        int sumEven=0;
+        for(String item : args){
+            int number = Integer.parseInt(item);
+            if (number % 2 != 0) {
+                if(number < 0) {
+                    sumEven += number;
+                }
             } else {
-                if(number < 0)
-                    arrEven.add(number);
+                if(number >0)
+                    sumOld+=number;
             }
         }
-        System.out.println("чётных и положительных"+arrOld);
-        System.out.println("нечётных и отрицательных" +arrEven);
+        System.out.println(sumOld);
+        System.out.println(sumEven);
     }
 }
