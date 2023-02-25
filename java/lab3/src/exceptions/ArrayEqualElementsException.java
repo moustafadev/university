@@ -1,4 +1,4 @@
-package task.exceptions;
+package exceptions;
 
 public class ArrayEqualElementsException extends Exception{
     @Override

@@ -1,12 +1,12 @@
-package task.interfaces;
+package interfaces;
 
-import task.exceptions.ArrayEqualElementsException;
-import task.exceptions.ArrayMoreThanNumberElementsException;
-import task.exceptions.ArrayLessElementsException;
+
+import exceptions.ArrayEqualElementsException;
+import exceptions.ArrayLessElementsException;
+import exceptions.ArrayMoreThanNumberElementsException;
 
 import java.util.ArrayList;
 
 public interface IHandlingArrayException {
-
     ArrayList<Integer> processParameters(String[] args) throws ArrayLessElementsException, ArrayEqualElementsException, ArrayMoreThanNumberElementsException;
 }
