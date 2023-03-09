@@ -4,6 +4,9 @@ import fileWriter.WriterToTXTFile;
 
 import java.util.ArrayList;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 public class HandlerLogicTask {
 
     private ArrayList<Integer> list;
@@ -18,7 +21,7 @@ public class HandlerLogicTask {
 
     public void handelLogicTask() {
         for (Integer number : list) {
-            //assertThat("They are not equal!",number,is(2));
+            //assertThat("They are equal!",number,is(2));
             if (number % 2 != 0) {
 //                if(number < 0) {
                 sumEven += number;
@@ -30,7 +33,7 @@ public class HandlerLogicTask {
         }
     }
 
-    ///Users/macbookair/university/java/lab3/output.txt
+    // /Users/macbookair/university/java/lab3/output.txt
     public void sumOld() {
         writerToTXTFile.writeToFile(String.valueOf(this.sumOld));
         System.out.println(this.sumOld);

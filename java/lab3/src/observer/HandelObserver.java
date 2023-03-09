@@ -17,7 +17,7 @@ public class HandelObserver implements Observer {
     }
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("We got some Array in Observable");
+        System.out.println(arg);
         setArrayList((ArrayList<Integer>) arg);
     }
 }
