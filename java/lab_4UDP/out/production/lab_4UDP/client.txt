@@ -1,0 +1,6 @@
+Result: 104.
+Result: 7.
+Result: 58.
+Result: 7.
+Result: 6.
+Result: 2.

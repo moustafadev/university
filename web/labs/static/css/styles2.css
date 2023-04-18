@@ -2,10 +2,7 @@
     box-shadow: 0 0 0 0.03rem rgba(220,53,69,.25);
     border-color: rgb(220,53,69);
 }
-.btn, .btn:focus, .btn:active{
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-}
+
 .btn{
     color: white;
     border-radius: 999px;

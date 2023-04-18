@@ -1,16 +1,8 @@
-//function esc(element) {
-//    document.addEventListener('keydown', event => {
-//        if(event.key === 'Escape') {
-//            element.style.display = 'none';
-//        }
-//    });
-//    element.parentElement.querySelector('input[type=text]').addEventListener("blur", () => {
-//        setTimeout(() => {
-//            element.style.display = 'none';
-//        },80);
-//    });
-//}
 
+// input: يتم تنشيط هذا الحدث عندما يقوم المستخدم بإدخال قيمة جديدة في عنصر محدد
+// ، مثل حقل النص، أو عندما يقوم المستخدم بتحديث القيمة الحالية في العنصر المحدد.
+// focus: يتم تنشيط هذا الحدث عندما يقوم المستخدم بتحديد
+//  أو التركيز على عنصر محدد، مثل حقل النص، عنصر الزر، أو أي عنصر آخر على الصفحة.
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#flight-from").addEventListener("input", event => {
         flight_from(event);
@@ -21,15 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelector("#flight-from").addEventListener("focus", event => {
-        flight_from(event, true);
+        flight_from(event);
     });
 
     document.querySelector("#flight-to").addEventListener("focus", event => {
-        flight_to(event, true);
-    });
-
-    document.querySelectorAll('.trip-type').forEach(type => {
-        type.onclick = trip_type;
+        flight_to(event);
     });
 
 });
@@ -53,103 +41,15 @@ function selectplace(option) {
     input.dataset.value = option.dataset.value;
 }
 
-function flight_to(event, focus=false) {
+function flight_to(event) {
     let input = event.target;
-    let list = document.querySelector('#places_to');
     showplaces(input);
-    if(!focus) {
-        input.dataset.value = '';
-    }
-    if(input.value.length > 0) {
-        fetch('query/places/'+input.value)
-        .then(response => response.json())
-        .then(places => {
-            list.innerHTML = '';
-            places.forEach(element => {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'each_places_to_list');
-                div.classList.add('places__list');
-                div.setAttribute('onclick', "selectplace(this)");
-                div.setAttribute('data-value', element.code);
-                div.innerText = `${element.city} (${element.country})`;
-                list.append(div);
-            });
-        });
-    }
 }
 
-function flight_from(event, focus=false) {
+function flight_from(event) {
     let input = event.target;
-    let list = document.querySelector('#places_from');
     showplaces(input);
-    if(!focus) {
-        input.dataset.value = '';
-    }
-    if(input.value.length > 0) {
-        fetch('query/places/'+input.value)
-        .then(response => response.json())
-        .then(places => {
-            list.innerHTML = '';
-            places.forEach(element => {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'each_places_from_list');
-                div.classList.add('places__list');
-                div.setAttribute('onclick', "selectplace(this)");
-                div.setAttribute('data-value', element.code);
-                div.innerText = `${element.city} (${element.country})`;
-                list.append(div);
-            });
-        });
-    }
 }
 
-function trip_type() {
-    document.querySelectorAll('.trip-type').forEach(type => {
-        if(type.checked) {
-            if(type.value === "1") {
-                document.querySelector('#return_date').value = '';
-                document.querySelector('#return_date').disabled = true;
-            }
-            else if(type.value === "2") {
-                document.querySelector('#return_date').disabled = false;
-            }
-        }
-    })
-}
 
-function includeHTML() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("includedContent").innerHTML = this.responseText;
-    }
-    };
-    xhttp.open("GET", "/templates/index.html", true);
-    xhttp.send();
-}
-function flight_search() {
-    if(!document.querySelector("#flight-from").dataset.value) {
-        alert("Please select flight origin.");
-        return false;
-    }
-    if(!document.querySelector("#flight-to").dataset.value) {
-        alert("Please select flight destination.");
-        return false;
-    }
-    if(document.querySelector("#one-way").checked) {
-        if(!document.querySelector("#depart_date").value) {
-            alert("Please select departure date.");
-            return false;
-        }
-    }
-    if(document.querySelector("#round-trip").checked) {
-        if(!document.querySelector("#depart_date").value) {
-            alert("Please select departure date.");
-            return false;
-        }
-        if(!document.querySelector("#return_date").value) {
-            alert("Please select return date.");
-            return false;
-        }
-    }
-}
+

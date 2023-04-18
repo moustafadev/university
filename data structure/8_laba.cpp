@@ -29,7 +29,7 @@ void pushMainBack(MainNode** Head, int new_id){
     (*Head)->Next = temp;
     temp->Next = nullptr;
 }
-
+ 
 bool pushMainAfter(int id, MainNode** Head ,int new_id){
     MainNode* current = (*Head)->Next;
     while ((current != nullptr)&&(current->id != id)){

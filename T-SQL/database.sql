@@ -37,7 +37,7 @@ CREATE TABLE Customers
 
 CREATE TABLE Books_in_use
 (
-    ID_book INT NOT NULL,
+     IID_bookNT NOT NULL,
     ID_customers INT NOT NULL,
     date_of_issue DATE NOT NULL,
     return_date DATE NOT NULL,
