@@ -19,6 +19,7 @@ double G3(double x, double y)
 {
     return (2.0/5.0*y+2.0/5.0*x+2.0/5.0);
 }
+
 void simpleIteration(double eps) 
 {
     // Начальные приближения

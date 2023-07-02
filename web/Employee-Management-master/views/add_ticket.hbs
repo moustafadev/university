@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ticket</title>
+    <link rel="stylesheet" href="add_tichet.css">
+    <script src="add_tichet.js"></script>
+    <link rel="stylesheet" href="home.css">
+    <script rel="stylesheet" src="home.js"></script>
+</head>
+<body>
+        <!--creating the button to handle opening the navbar-->
+    <nav>
+        
+    <span onclick="openNav()" class="mobile-nav-open-icon">&#9776</span>
+    </nav>
+
+    <!-- this would work as the backdrop when navbar is open-->
+    <div class="backdrop-container" id="backdrop"></div>
+
+<!--the would be the drawer and it's content-->
+  <div id="mySidenav" class="sidenav-container">
+        <span class="drawer-close-button">
+        <!--icon for closing of the navbar-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        </span>
+        <!--Each links on the navbar-->
+        <h3 class="text-light">Add Airline Ticket</h3>
+        {{#if type}}
+                <a class="text-light" href="/about">About</a>
+                <a class="text-light" href="/home">Home</a>
+                <a class="text-light" href="/contact">Contact</a>
+                <a class="text-light" href="/new">New User</a>
+                <a class="text-light" href="/add_ticket">Add Tichet</a>
+                <a class="text-light" href="/employees">Employees</a>
+                <a class="text-light" href="/logout">Logout</a>
+        {{else}}
+            <ul>
+                <a  class="text-light" href="/about">About</a>
+                <a class="text-light" href="/home">Home</a>
+                <a  class="text-light" href="/contact">Contact</a>
+                <a  class="text-light" href="/profile">Profile</a>
+                <a  class="text-light" href="/logout">Logout</a>
+            </ul>
+        {{/if}}
+
+
+    </div>
+
+    <form id="ticket-form" action="/add-ticket" method="POST" onsubmit="return validateForm()">
+        <label for="to">Airline Name:</label>
+        <input type="text" id="airline" name="airline" required>
+        <label for="from">From Location:</label>
+        <input type="text" id="from" name="from" required>
+        <label for="to">To Location:</label>
+        <input type="text" id="to" name="to" required>
+        <label for="to">Total Seats:</label>
+        <input type="text" id="seats" name="seats" required>
+        <label for="departure">Departure Date:</label>
+        <input type="date" id="departure" name="departure" required>
+        <label for="return">Arrival Time:</label>
+        <input type="date" id="meeting-time" name="arrival" value="2018-06-12T19:30">
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+        <button type="submit">Add Ticket</button>
+    </form>
+    <script>
+    function validateForm() {
+        var departureInput = document.getElementById('departure');
+        var departureDate = new Date(departureInput.value);
+        var currentDate = new Date();
+
+        if (departureDate < currentDate) {
+            alert("Departure date cannot be in the past.");
+            return false; // تمنع إرسال النموذج إذا كان التاريخ المدخل في الماضي
+        }
+
+        return true; // يسمح بإرسال النموذج إذا كان التاريخ صحيحًا
+    }
+</script>
+</body>
+</html>

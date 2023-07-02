@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+    </nav>
+    <div class="jumbotron container" style="margin-top: 10px;">
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input class="form-control" type="text" name="username" placeholder="username">
+                <small class="form-text text-muted">Enter full name as submitted to the organisation</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input class="form-control" type="password" name="password" placeholder="password">
+            </div>
+            <button class=" btn btn-outline-dark">Login</button>
+        </form>
+        <p class="lead mt-4">
+            No Account? <a href="/new">signup</a>
+        </p>
+      
+    </div>
+    <!-- Footer -->
+<footer class="page-footer font-small teal pt-4" style="background-color: teal; color: white;">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase">Employee Management Portal</h5>
+          <p>wanna know more about us? Checkout given links</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase">Social Media</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              Instagram
+            </li>
+            <li>
+              LinkedIn
+            </li>
+            <li>
+              Facebook
+            </li>
+            <li>
+              Telegram
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="text-uppercase">Crystal Technologies Pvt. Ltd.</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              Home
+            </li>
+            <li>
+              About
+            </li>
+            <li>
+              Contact Us
+            </li>
+            <li>
+              Features
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+      crystal-technologies.com
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+</body>
+</html>

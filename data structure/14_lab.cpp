@@ -1,11 +1,4 @@
-//ЛАБОРАТОРНАЯ РАБОТА №14 (РАЗДЕЛ 2, ТЕМА 2) - ПРОСТЕЙШИЕ МЕТОДЫ СОРТИРОВКИ МАССИВОВ + ТРИ УЛУЧШЕННЫХ МЕТОДА СОРТИРОВКИ
 
-#include <iostream>
-#include <cstdlib>
-#include <iomanip>
-#include <cmath>
-
-using namespace std;
 
 //Простейшие методы сортировки – алгоритмически простые методы сортировки массивов с трудоемкостью порядка n2
 //алгоритмически достаточно сложные методы сортировки массивов с трудоемкостью порядка  n*logn
@@ -18,297 +11,238 @@ using namespace std;
 //Быстрая сортировка -основанный на разбиении набора данных на все меньшие подмассивы с последующей сортировкой каждого из них
 
 
-int *a = NULL; //будущий массив
-int compares = 0, changes = 0; //глобальные переменные для посчета количества сравнений и пересылок
-int num = 0; //размер массива (колчиество элементов)
+//Улучшенные методы сортировки массивов
+#include <stdio.h>
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <cstdlib>
+using namespace std;
 
-//метод обработки ошибок ввода (проверяет, чтобы были введены ТОЛЬКО цифры, без букв) //возвращает ПРАВИЛЬНО ВВЕДЕННОЕ ЧИСЛО
-int failure() {
-    int a;
-    while (!(cin >> a) || (cin.peek() != '\n'))
-    {
-        cin.clear();
-        while (cin.get() != '\n');
-        cout << "\n ОШИБКА ВВОДА. ПОВТОРИТЕ ВВОД: ";
-    }
-    return a;
+int* Create(int n)//Создание массива
+{
+	if (n <= 10000)
+	{
+		int* mas;
+		mas = new int[n];
+		for (int i = 0; i < n; i++)
+			mas[i] = rand() % 100;
+		return mas;
+	}
+	return NULL;
 }
 
-//вывод состояния массива
-void show(int *b) {
-    cout << "\n СОСТОЯНИЕ МАССИВА: \n";
-    for (int i=0; i<num; i++)
-        cout << b[i] << " ";
-    cout << "\n";
+void Copy(int* mas, int* copia, int n)//копировка основного массива
+{
+	for (int i = 0; i < n; i++)
+		copia[i] = mas[i];
 }
 
-//создание копии исходного массива
-int *copy_of_a() {
-    int *b = new int[num];
-    for (int i=0; i<num; i++)
-        b[i] = a[i];
-    return b;
+void Show(int* mas, int n)//Показ неотсортированного массива
+{
+	for (int i = 0; i < n; i++)
+		cout << mas[i] << " ";
 }
 
-
-//СОЗДАНИЕ МАССИВА
-void Creator(){
-    num = 0;
-    cout << " ВВЕДИТЕ КОЛИЧЕСТВО ЭЛЕМЕНТОВ МАССИВА (НЕ БОЛЕЕ 10 000): ";
-    while (num < 1 || num > 10000) {
-        num = failure();
-        if (num < 1 || num >10000) cout << " ВВЕДЕННО НЕДОПУСТИМОЕ ЗНАЧЕНИЕ. ПОВТОРИТЕ ВВОД: ";
-    }
-    if (a != NULL)  //если массив непустой (то есть выбрана команда обновления массива)
-        delete [] a;
-    a = new int[num];
-    srand(static_cast<unsigned int>(time(0))); //инициализация генератора псевдослучайных чисел rand
-    for (int i=0; i<num; i++)
-        a[i] = rand() % 100;
-    cout << "\n МАССИВ УСПЕШНО СОЗДАН \n";
+void ShowSort(int* mas, int n, int srav, int moves)//Показ сортированного массива
+{
+	for (int i = 0; i < n; i++)
+		cout << mas[i] << " ";
+	cout << endl << "Количество сравнений: " << srav
+		<< endl << "Количество перестановок: " << moves;
+	cout << endl << endl;;
 }
 
-//СОРТИРОВКА ОБМЕНОМ (МЕТОД ПУЗЫРЬКА)
-void sorting_bubble() {
-    int *b = copy_of_a(); //создаем копию исходного массива
-    int temp;
-    cout << "\n ВЫПОЛНЯЕТСЯ СОРТИРОВКА ОБМЕНОМ (МЕТОД ПУЗЫРЬКА)...\n";
-    for (int i=0; i<num; i++)
-        for (int j = num-1; j > i; j--) {
-            compares++;
-            if (b[j-1] > b[j]) {
-                temp = b[j-1];
-                b[j-1] = b[j];
-                b[j] = temp;
-                changes++;
-            }
-        }
-    cout << "\n СОРТИРОВКА ОБМЕНОМ ВЫПОЛНЕНА\n";
-    show(b);
-    cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-    delete [] b; //после выполнения сортировки удаляем копию исходного массива (он больше не нужен)
-    compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
+//Метод Шелла(вставок)
+void Shell(int* mas, int n, int* steps, int t)
+{
+	int srav = 0, moves = 0;
+	for (int m = 0; m < t; m++)
+	{
+		int k = steps[m];
+		for (int i = k; i < n; i++)
+		{
+			int tmp = mas[i];
+			int j = i - k;
+			moves++;
+			while (srav++ && j >= 0 && tmp < mas[j])
+			{
+				mas[j + k] = mas[j];
+				j = j - k;
+				moves++;
+			}
+			moves++;
+			mas[j + k] = tmp;
+		}
+	}
+	ShowSort(mas, n, srav, moves / 3);
 }
 
-//СОРТИРОВКА ВСТАВКАМИ
-void sorting_inserts() {
-    int *b = copy_of_a(); //создаем копию исходного массива
-    int temp=0, i=0, j=0;
-    cout << "\n ВЫПОЛНЯЕТСЯ СОРТИРОВКА ВСТАВКАМИ\n";
-    for (i = 1; i < num; i++) {
-        temp = b[i];
-        j = i-1;
-        compares++;
-        while (j > -1 && temp < b[j]) {
-            b[j+1] = b[j];
-            if (j != i-1) //если произошла перестановка во внутреннем цикле
-                changes++;
-            j--;
-            compares++;
-        }
-        if (b[j + 1] == temp) //если перестановок не было
-            changes--;
-        b[j+1] = temp;
-        changes++;
-    }
-    cout << "\n СОРТИРОВКА ВСТАВКАМИ ВЫПОЛНЕНА\n";
-    show(b);
-    cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-    delete [] b; //после выполнения сортировки удаляем копию исходного массива (он больше не нужен)
-    compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
+//Метод быстрой сортировки(обмен)
+void QuickSort(int* mas, int left, int right, int& srav, int& moves)
+{
+	int i = left;
+	int j = right;
+	int mid = mas[(left + right) / 2];
+	while (i <= j)
+	{
+		while (++srav && mas[i] < mid) i++;
+		while (++srav && mas[j] > mid) j--;
+		if (i <= j)
+		{
+			int tmp = mas[i];
+			mas[i] = mas[j];
+			mas[j] = tmp;
+			i++;
+			j--;
+			moves++;
+		}
+	}
+	if (left < j)
+		QuickSort(mas, left, j, srav, moves);
+	if (i < right)
+		QuickSort(mas, i, right, srav, moves);
 }
 
-//СОРТИРОВКА ВЫБОРОМ
-void sorting_choice() {
-    int *b = copy_of_a(); //создаем копию исходного массива
-    int min = 0, i = 0, j = 0, k = 0;
-    cout << "\n ВЫПОЛНЯЕТСЯ СОРТИРОВКА ВЫБОРОМ\n";
-    for (i=0; i < num; i++) {
-        k = i; min = b[i]; //устанавливаем начальный минимальный элемент
-        for (j = i+1; j < num; j++) {
-            if (b[j] < min) { //изменяем текущий минимальный элемент
-                k = j; min = b[j];
-            }
-            compares++;
-        }
-        if (b[i] == min) //если перестановок не было
-            changes--;
-        b[k] = b[i];
-        b[i] = min;
-        changes++;
-    }
-    cout << "\n СОРТИРОВКА ВЫБОРОМ ВЫПОЛНЕНА\n";
-    show(b);
-    cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-    delete [] b; //после выполнения сортировки удаляем копию исходного массива (он больше не нужен)
-    compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
+//Метод пирамидальной сортировки(выбор)
+int srav = 0, moves = 0;
+void Sito(int* mas, int k, int n)
+{
+	while (1)
+	{
+		int left = 2 * k + 1;
+		int right = 2 * k + 2;
+		int largest;
+		if (left<n && mas[left]>mas[k])
+			largest = left;
+		else
+			largest = k;
+		srav++;
+		if (right<n && mas[right]>mas[largest])
+			largest = right;
+		if (largest == k)
+			break;
+		int tmp = mas[k];
+		mas[k] = mas[largest];
+		mas[largest] = tmp;
+		moves++;
+		k = largest;
+	}
 }
 
-//МЕТОД ШЕЛЛА
-void sorting_shell(){
-    int *b = copy_of_a(); //СОЗДАЕМ КОПИЮ ИСХОДНОГО МАССИВА
-    int temp=0, i=0, j=0, k = 0;
-    int t = (log(num)/log(2) - 1); // ЧИСЛО ШАГОВ ГРУППИРОВКИ
-    int h[] = { 1, 3, 5, 9, 17, 33, 65, 129, 257, 513, 1025, 2049, 4097, 8194 }; // ПОСЛЕДОВАТЕЛЬНОСТЬ ШАГОВ
-    cout << "\n ВЫПОЛНЯЕТСЯ СОРТИРОВКА МЕТОДОМ ШЕЛЛА\n";
-    for (int m = t - 1; m > -1; m--) {
-        k = h[m];
-        for (i = k; i < num; i++) {
-            temp = b[i];
-            j = i-k;
-            compares++;
-            while (j > -1 && temp < b[j]) {
-                b[j+k] = b[j];
-                if (j != i - k) //ЕСЛИ ПРОИЗОШЛА ПЕРЕСТАНОВКА ВО ВНУТРЕННЕМ ЦИКЛЕ
-                    changes++;
-                j = j - k;
-                compares++;
-            }
-            if (b[j + 1] == temp) //ЕСЛИ ПЕРЕСТАНОВОК НЕ БЫЛО
-                changes--;
-            b[j+k] = temp;
-            changes++;
-        }
-    }
-    cout << "\n СОРТИРОВКА МЕТОДОМ ШЕЛЛА ВЫПОЛНЕНА\n";
-    show(b);
-    cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-    delete [] b; //ПОСЛЕ ВЫПОЛНЕНИЯ СОРТИРОВКИ УДАЛЯЕМ КОПИЮ ИСХОДНОГО МАССИВА (ОН БОЛЬШЕ НЕ НУЖЕН)
-    compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
+void PyramidalSort(int* mas, int n)
+{
+	for (int i = (n - 1) / 2; i >= 0; i--)
+		Sito(mas, i, n);
+	for (int i = n - 1; i >= 1; i--)
+	{
+		int tmp = mas[0];
+		mas[0] = mas[i];
+		mas[i] = tmp;
+		moves++;
+		Sito(mas, 0, i);
+	}
+	ShowSort(mas, n, srav, moves);
+	srav = 0; moves = 0;
 }
 
-//БЫСТРАЯ СОРТИРОВКА
-void sorting_quick(int left, int right, int *b){
-    int i, j, sred, temp;
-    i = left; j = right; // УСТАНОВКА НАЧАЛЬНЫХ ЗНАЧЕНИЙ ГРАНИЦ ПОДМАССИВА
-    if (b == a)
-        b = copy_of_a();
-    sred = b[(left + right) / 2]; // ОПРЕДЕЛЕНИЕ СЕРЕДИННОГО ЭЛЕМЕНТА
-    do {
-        compares++;
-        while (b[i] < sred) { // ПОИСК СЛЕВА ЭЛЕМЕНТА, БОЛЬШЕГО ОПОРНОГО
-            i++;
-            compares++;
-        }
-        compares++;
-        while (b[j]>sred) { // ПОИСК СПРАВА ЭЛЕМЕНТА, МЕНЬШЕГО ОПОРНОГО
-            j--;
-            compares++;
-        }
-        compares++;
-        if (i <= j) { // ОБМЕНИВАЕМ ЭЛЕМЕНТЫ И ИЗМЕНЯЕМ ИНДЕКСЫ
-            temp = b[i];
-            b[i] = b[j];
-            b[j] = temp;
-            i++; j--;
-            changes++;
-        }
-        compares++;
-    } while (i < j);
-    compares++;
-    if (left < j)
-        sorting_quick (left , j, b); // ОБРАБОТКА ЛЕВОЙ ПОЛОВИНЫ
-    compares++;
-    if (i < right)
-        sorting_quick (i , right, b); // ОБРАБОТКА ПРАВОЙ ПОЛОВИНЫ
-    if (left == 0 && right == (num - 1)) {
-        cout << "\n БЫСТРАЯ СОРТИРОВКА ВЫПОЛНЕНА\n";
-        show(b);
-        cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-        delete [] b; //ПОСЛЕ ВЫПОЛНЕНИЯ СОРТИРОВКИ УДАЛЯЕМ КОПИЮ ИСХОДНОГО МАССИВА (ОН БОЛЬШЕ НЕ НУЖЕН)
-        compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
-    }
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	char otv;
+	int num;
+	int* unsort = NULL;
+	int* sort = NULL;
+	do
+	{
+		system("cls"); //Очистка экрана
+
+		puts("\tВыберите номер пункта меню:");
+		puts("1 - Создать массив");
+		puts("2 - Показать неотсортированный массив");
+		puts("3 - Метод Шелла");
+		puts("4 - Метод быстрой сортировки");
+		puts("5 - Метод пирамидальной сортировки");
+		puts("0 - Выход");
+
+		cout << "Выберите пункт: ";
+		cin >> otv;
+		system("cls");
+		switch (otv)
+		{
+		case '1':
+			if (unsort != NULL)
+			{
+				delete[] unsort;
+				delete[] sort;
+			}
+			cout << "Введите количество элементов для добаления: ";
+			cin >> num;
+			unsort = Create(num);
+			if (unsort != NULL)
+			{
+				sort = new int[num];
+				cout << "Массив создан!" << endl;
+			}
+			else
+				cout << "Массив невозможно создать!" << endl;
+			break;
+		case '2':
+			if (unsort != NULL)
+			{
+				Show(unsort, num);
+				cout << endl;
+			}
+			else
+				cout << endl << "Массив пуст!" << endl;
+			break;
+		case '3':
+			if (unsort != NULL)
+			{
+				cout << "Введите количество шагов: ";
+				int t;
+				cin >> t;
+				cout << endl << "Значения шагов: ";
+				int* pSteps = new int[t];
+				for (int i = 0; i < t; i++)
+					cin >> pSteps[i];
+				cout << endl;
+				Copy(unsort, sort, num);
+				Shell(sort, num, pSteps, t);
+				delete[] pSteps;
+			}
+			else
+				cout << endl << "Массив пуст!" << endl;
+			break;
+		case '4':
+			if (unsort != NULL)
+			{
+				int moves = 0, srav = 0;
+				Copy(unsort, sort, num);
+				QuickSort(sort, 0, num - 1, srav, moves);
+				ShowSort(sort, num, srav, moves);
+			}
+			else
+				cout << endl << "Массив пуст!" << endl;
+			break;
+		case '5':
+			if (unsort != NULL)
+			{
+				Copy(unsort, sort, num);
+				PyramidalSort(sort, num);
+			}
+			else
+				cout << endl << "Массив пуст!" << endl;
+			break;
+		case '0':
+			delete[] sort;
+			delete[] unsort;
+			break;
+		default:
+			printf("Произошла ошибка!\n");
+		}
+
+		getchar();
+	} while (otv != '0');
 }
 
-// ПРОСЕИВАНИЕ
-void sito(int al, int ar, int *b) {
-    int i = al, j = 2*al, x = b[al];
-//    cout << "i = " << i << "; j = " << j << "; b[j + 1] = " << b[j + 1] << "\n";
-    compares++;
-    if ((j < ar) && (b[j + 1] < b[j]))
-        j++;
-    compares++;
-    while ((j <= ar) && (b[j] < x)) {
-        b[i] = b[j];
-        i = j;
-        j = 2 * j;
-        compares++;
-        if ((j < ar) && (b[j + 1] < b[j]))
-            j++;
-        compares++;
-    }
-    b[i] = x;
-    changes++;
-}
-
-// ПИРАМИДАЛЬНАЯ СОРТИРОВКА
-void sorting_pyramidal() {
-    int *b = copy_of_a(); //СОЗДАЕМ КОПИЮ ИСХОДНОГО МАССИВА
-    int left=(num / 2), right=num - 1; // ОПРЕДЕЛЕНИЕ ГРАНИЦ ПРАВОЙ ПОЛОВИНЫ МАССИВА
-    int temp;
-    compares++;
-    while (left > 0) { // ЦИКЛ ПОСТРОЕНИЯ ПИРАМИДЫ
-        left--;
-        sito (left, right,b);
-        compares++;
-    }
-    compares++;
-    while (right > 0) { // ЦИКЛ СОРТИРОВКИ
-        changes++;
-        temp = b[0]; b[0] = b[right]; b[right] = temp;
-        right--;
-        sito (left, right,b);
-        compares++;
-    }
-    
-    cout << "\n ПИРАМИДАЛЬНАЯ СОРТИРОВКА ВЫПОЛНЕНА\n";
-    show(b);
-    cout << "\n КОЛИЧЕСТВО СРАВНЕНИЙ: "<<  compares <<", КОЛИЧЕСТВО ПЕРЕСЫЛОК: "<< changes << "\n";
-    delete [] b; //ПОСЛЕ ВЫПОЛНЕНИЯ СОРТИРОВКИ УДАЛЯЕМ КОПИЮ ИСХОДНОГО МАССИВА (ОН БОЛЬШЕ НЕ НУЖЕН)
-    compares = 0; changes = 0; // ОБНУЛЯЕМ СЧЕТЧИКИ КОЛИЧЕСТВА СРАВНЕНИЙ И ПЕРЕСЫЛОК
-    
-}
-
-int main() {
-    Creator();
-    show(a);
-    int n = -1;
-    while (true) {
-        n = -1;
-        cout << " ___________________________________________________________\n\n"
-        <<" ВЫБЕРИТЕ ДЕЙСТВИЕ ИЗ СПИСКА\n"
-        << "\n ПРОСТЕЙШИЕ МЕТОДЫ:\n"
-        <<" 1 - ВЫПОЛНИТЬ СОРТИРОВКУ ОБМЕНОМ (МЕТОД ПУЗЫРЬКА)\n"
-        <<" 2 - ВЫПОЛНИТЬ СОРТИРОВКУ ВСТАВКАМИ\n"
-        <<" 3 - ВЫПОЛНИТЬ СОРТИРОВКУ ВЫБОРОМ\n"
-        << "\n УЛУЧШЕННЫЕ МЕТОДЫ:\n"
-        <<" 4 - ВЫПОЛНИТЬ СОРТИРОВКУ МЕТОДОМ ШЕЛЛА\n"
-        <<" 5 - ВЫПОЛНИТЬ БЫСТРУЮ СОРТИРОВКУ\n"
-        <<" 6 - ПИРАМИДАЛЬНАЯ СОРТИРОВКА\n"
-        <<" 7 - ОБНОВИТЬ МАССИВ\n"
-        <<" 0 - ВЫХОД ИЗ ПРОГРАММЫ\n"
-        <<" ВАШ ВЫБОР: "; n = failure();
-        while ((n < 0) || (n > 7)) {
-            cout <<" ТАКОЙ КОМАНДЫ НЕ СУЩЕСТВУЕТ. ПОВТОРИТЕ ВВОД: "; n = failure(); }
-        if (n == 1){ //1 - ВЫПОЛНИТЬ СОРТИРОВКУ ОБМЕНОМ (МЕТОД ПУЗЫРЬКА)
-            show(a); sorting_bubble();}
-        else if (n == 2){ //2 - ВЫПОЛНИТЬ СОРТИРОВКУ ВСТАВКАМИ
-            show(a); sorting_inserts();}
-        else if (n == 3){ //3 - ВЫПОЛНИТЬ СОРТИРОВКУ ВЫБОРОМ
-            show(a); sorting_choice();}
-        else if (n == 4) { //4 - ВЫПОЛНИТЬ СОРТИРОВКУ МЕТОДОМ ШЕЛЛА
-            show(a); sorting_shell(); }
-        else if (n == 5) { //5 - ВЫПОЛНИТЬ БЫСТРУЮ СОРТИРОВКУ
-            show(a); sorting_quick(0, num - 1, a); }
-        else if (n == 6) { //6 - ПИРАМИДАЛЬНАЯ СОРТИРОВКА
-            show(a); sorting_pyramidal();}
-        else if (n == 7) {//7 - ОБНОВИТЬ МАССИВ
-            Creator(); show(a); }
-        else if (n == 0) //0 - ВЫХОД ИЗ ПРОГРАММЫ
-            break;
-    }
-    cout << "\n УДАЛЕНИЕ МАССИВА... ОЧИСТКА ПАМЯТИ...\n";
-    delete [] a;
-    cout << "\n ВЫХОД ИЗ ПРОГРАММЫ...\n\n ";
-    return 0;
-}

@@ -1,0 +1,11 @@
+
+CREATE VIEW vBookPublisher
+AS 
+SELECT * FROM Books
+WHERE book_name = 'bo'
+
+
+
+
+
+

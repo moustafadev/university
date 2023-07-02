@@ -4,20 +4,25 @@
 // focus: يتم تنشيط هذا الحدث عندما يقوم المستخدم بتحديد
 //  أو التركيز على عنصر محدد، مثل حقل النص، عنصر الزر، أو أي عنصر آخر على الصفحة.
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#flight-from").addEventListener("input", event => {
-        flight_from(event);
+    
+    $(document).ready(function() {
+        $("#flight-from").on("input input", function(event) {
+            flight_from(event);
+        });
+
+        $("#flight-to").on("input input", function(event) {
+            flight_to(event);
+        });
     });
 
-    document.querySelector("#flight-to").addEventListener("input", event => {
-        flight_to(event);
-    });
+    $(document).ready(function() {
+        $("#flight-from").on("input focus", function(event) {
+            flight_from(event);
+        });
 
-    document.querySelector("#flight-from").addEventListener("focus", event => {
-        flight_from(event);
-    });
-
-    document.querySelector("#flight-to").addEventListener("focus", event => {
-        flight_to(event);
+        $("#flight-to").on("input focus", function(event) {
+            flight_to(event);
+        });
     });
 
 });

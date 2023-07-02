@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "__bits": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "cstdlib": "cpp"
     }
 }

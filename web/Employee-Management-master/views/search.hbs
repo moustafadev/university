@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.typekit.net/cav5lva.css">
+  <!-- {{!-- <link href="css/styles2.css" rel="stylesheet"> --}} -->
+  <link rel="icon" type="image/ico" href="/static/img/favicon.ico">
+  <link rel="icon" type="image/ico" href="/static/img/favicon.ico">  
+  <link rel="stylesheet" href="search_styl.css">
+    <title>Search | Flight</title>
+    
+<link rel="stylesheet" href="search_style.css"> 
+   <script rel="stylesheet" src="search.js"></script> 
+    <!-- <script src="js/search2.js"></script> -->
+
+</head>
+<body>
+    <h1>Tickets Results</h1>
+    <form class="search-flight-form" method="post" action="/buy">
+  <div id="ticket-results" class="container">
+    {{#each ticketData}}
+    <div class="ticket"> 
+      <p class="label">Airline: {{airline_name}}</p>
+      <p class="label">From: {{from}} </p>
+      <p class="label">To: {{to}} </p>
+      <p class="label">Departure: {{departure}} </p>
+      <p class="label">Arrival: {{arrival}}</p>
+      <p class="price">Price: {{price}} </p>
+      <button type="submit" class="buy-button" name="ticket_id" value="{{_id}}">Buy Ticket</button>
+    </div>
+    {{else}}
+    <li>No Results</li>
+    {{/each}}
+  </div>
+</form>
+
+</body>
+</html>

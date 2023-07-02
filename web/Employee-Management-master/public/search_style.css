@@ -1,0 +1,58 @@
+/* Add your custom styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .ticket {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .ticket p {
+    margin: 5px 0;
+  }
+  
+  .ticket .label {
+    font-weight: bold;
+  }
+  
+  .ticket .price {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .buy-button {
+    display: block;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .buy-button:hover {
+    background-color: #45a049;
+  }
+  
+  .buy-button:focus {
+    outline: none;
+  }
+  
+  
