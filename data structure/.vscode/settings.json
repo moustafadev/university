@@ -5,6 +5,10 @@
         "ostream": "cpp",
         "__bits": "cpp",
         "unordered_map": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "istream": "cpp",
+        "iosfwd": "cpp",
+        "new": "cpp",
+        "optional": "cpp"
     }
 }
