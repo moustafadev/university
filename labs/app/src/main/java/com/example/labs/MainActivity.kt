@@ -8,8 +8,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Divider
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -37,10 +43,87 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BirthdayCardPreview()
+                    BusinessCard()
 
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun BusinessCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth()
+            .background(Color(0xFF073042)),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        val image = painterResource(id = R.drawable.android_logo)
+        Image(
+            painter = image,
+            contentDescription = "Android Logo",
+            modifier = Modifier
+                .height(120.dp)
+                .width(150.dp)
+        )
+        Text(text = "Mahesh Pawar", color = Color.White, fontSize = 32.sp)
+        Text(text = "Android Developer", color = Color(0xFF3ddc84))
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 50.dp),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.Start
+    ) {
+        Divider(modifier = Modifier.fillMaxWidth(), thickness = 2.dp, color = Color(0xFF526E7B))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 50.dp)
+        ) {
+            val phone = painterResource(id = R.drawable.ic_phone)
+            Image(painter = phone, contentDescription = null, modifier = Modifier.padding(8.dp))
+            Text(
+                text = "+11 (123) 444 555 666",
+                color = Color.White,
+                modifier = Modifier.padding(8.dp)
+            )
+
+        }
+        Divider(modifier = Modifier.fillMaxWidth(), thickness = 2.dp, color = Color(0xFF526E7B))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 50.dp)
+        ) {
+            val share = painterResource(id = R.drawable.ic_share)
+            Image(painter = share, contentDescription = null, modifier = Modifier.padding(8.dp))
+            Text(
+                text = "@AndroidDev",
+                color = Color.White,
+                modifier = Modifier.padding(8.dp)
+            )
+
+        }
+        Divider(modifier = Modifier.fillMaxWidth(), thickness = 2.dp, color = Color(0xFF526E7B))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 50.dp)
+        ) {
+            val email = painterResource(id = R.drawable.ic_email)
+            Image(painter = email, contentDescription = null, modifier = Modifier.padding(8.dp))
+            Text(
+                text = "mahesh@android.com",
+                color = Color.White,
+                modifier = Modifier.padding(8.dp)
+            )
+
         }
     }
 }
