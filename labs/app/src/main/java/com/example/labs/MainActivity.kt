@@ -59,11 +59,80 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LemonadeApp()
+                    ComposeQuadrantApp()
 
                 }
             }
         }
+    }
+}
+
+@Composable
+fun ComposeQuadrantApp() {
+    Column(Modifier.fillMaxWidth()) {
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description),
+                backgroundColor = Color(0xFFEADDFF),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description),
+                backgroundColor = Color(0xFFD0BCFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(Modifier.weight(1f)) {
+            ComposableInfoCard(
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description),
+                backgroundColor = Color(0xFFB69DF8),
+                modifier = Modifier.weight(1f)
+            )
+            ComposableInfoCard(
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description),
+                backgroundColor = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+    }
+}
+
+@Composable
+private fun ComposableInfoCard(
+    title: String,
+    description: String,
+    backgroundColor: Color,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = title,
+            modifier = Modifier.padding(bottom = 16.dp),
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ComposeQuadrantAppPreview() {
+    LabsTheme {
+        ComposeQuadrantApp()
     }
 }
 
