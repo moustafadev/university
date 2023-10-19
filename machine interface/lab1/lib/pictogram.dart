@@ -32,14 +32,12 @@ class _PictogramState extends State<Pictogram> {
   List<String> result = [];
 
   void handleCheckboxSelection() {
-    setState(() {//result
-
+    setState(() {
       if(selectedNumbers.length == 6){
         final res = selectedNumbers.where((element) => numberRandom.contains(element)).length;
         isFinished = true;
         result.add(res.toString());
       }
-
     });
   }
 
