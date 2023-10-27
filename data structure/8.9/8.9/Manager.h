@@ -25,6 +25,7 @@ public:
 		manager.salary = _salary;
 		next = nullptr;
 	}
+	
 
 	void SetSurname(string _surname) {
 		manager.surname = _surname;

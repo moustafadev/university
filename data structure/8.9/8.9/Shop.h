@@ -32,7 +32,7 @@ public:
 	}
 
 	~Shop() {
-		if (!IsEmpty()) {
+		if (IsNotEmpty()) {
     		delete[] stack;
     	}
     }
@@ -45,8 +45,9 @@ public:
 	bool IsFull() {
 		return Head == maxCount - 1;
 	}
+
 	 bool IsNotEmpty() const {
-        return (Head >= 0);
+        return shop.name != "";
     }
 
 	bool Push(Section section)
@@ -114,6 +115,7 @@ public:
 
 	bool AddInSubList(string name, string surname, int salary, bool fromFile = false)
 	{
+		
 		int i = Search(name);
 
 		if (i == -1)
@@ -151,6 +153,7 @@ public:
 	}
 
 	void WriteInTXT(ofstream &out) {
+		out << shop.name << endl;
 		for (int i = 0; i <= Head; i++)
 		{
 			stack[i].WriteInTXT(out);

@@ -60,7 +60,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     ComposeQuadrantApp()
-
                 }
             }
         }
@@ -75,13 +74,13 @@ fun ComposeQuadrantApp() {
                 title = stringResource(R.string.first_title),
                 description = stringResource(R.string.first_description),
                 backgroundColor = Color(0xFFEADDFF),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(0.5f)
             )
             ComposableInfoCard(
                 title = stringResource(R.string.second_title),
                 description = stringResource(R.string.second_description),
                 backgroundColor = Color(0xFFD0BCFF),
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(0.5f).fillMaxHeight(0.5f)
             )
         }
         Row(Modifier.weight(1f)) {

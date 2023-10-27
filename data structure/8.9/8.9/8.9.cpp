@@ -54,8 +54,8 @@ void Dialog() {
 		{
 		case 1:
 		{
-			if (shop->GetName() != ""){
-				cout << "Магазин уже существует.\nМагазин успешно удален" << endl;
+			if (shop->IsNotEmpty()){
+				cout << "Магазин уже существует!\nМагазин успешно удален." << endl;
 				shop = new Shop();
 			}
 			string name;
@@ -220,6 +220,7 @@ void Dialog() {
 				shop = new Shop(line);
 
 				while (!in.eof()) {
+					 
 
 					in.getline(line, 1000);
 
@@ -279,6 +280,7 @@ void Dialog() {
 					}
 					if (!successful)
 						break;
+					
 				}
 			}
 			in.close();
