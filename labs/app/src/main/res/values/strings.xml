@@ -1,20 +1,9 @@
+
 <resources>
-    <string name="app_name">labs</string>
-    <string name="roll">Roll</string>
-    <string name="lemon_select">Tap the lemon tree to select a lemon</string>
-    <string name="lemon_squeeze">Keep tapping the lemon to squeeze it</string>
-    <string name="lemon_drink">Tap the lemonade to drink it</string>
-    <string name="lemon_empty_glass">Tap the empty glass to start again</string>
-    <string name="lemon_tree_content_description">Lemon tree</string>
-    <string name="lemon_content_description">Lemon</string>
-    <string name="lemonade_content_description">Glass of lemonade</string>
-    <string name="empty_glass_content_description">Empty glass</string>
-    <string name="first_title">Text composable</string>
-    <string name="first_description">Displays text and follows the recommended Material Design guidelines.</string>
-    <string name="second_title">Image composable</string>
-    <string name="second_description">Creates a composable that lays out and draws a given Painter class object.</string>
-    <string name="third_title">Row composable</string>
-    <string name="third_description">A layout composable that places its children in a horizontal sequence.</string>
-    <string name="fourth_title">Column composable</string>
-    <string name="fourth_description">A layout composable that places its children in a vertical sequence.</string>
+    <string name="app_name">Dessert Clicker</string>
+    <string name="dessert_sold">Desserts sold</string>
+    <string name="total_revenue">Total Revenue</string>
+    <string name="share">Share</string>
+    <string name="share_text">I\'ve clicked %1$d Desserts for a total of $%2$d #AndroidDessertClicker</string>
+    <string name="sharing_not_available">Sharing Not Available</string>
 </resources>
