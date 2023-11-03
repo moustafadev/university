@@ -1,335 +1,313 @@
 
 
-package com.example.labs
+//practis 1
+fun main() {
+    val brunoSong = Song("We Don't Talk About Bruno", "Encanto Cast", 2022, 1_000_000)
+    brunoSong.printDescription()
+    println(brunoSong.isPopular)
+}
 
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.content.ContextCompat
-import com.example.labs.data.Datasource
-import com.example.labs.model.Dessert
-import com.example.labs.theme.DessertClickerTheme
 
-private const val TAG = "MainActivity"
+class Song(
+    val title: String,
+    val artist: String,
+    val yearPublished: Int,
+    val playCount: Int
+){
+    val isPopular: Boolean
+        get() = playCount >= 1000
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate Called")
-        setContent {
-            DessertClickerTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    DessertClickerApp(desserts = Datasource.dessertList)
-                }
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart Called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume Called")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG, "onRestart Called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause Called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop Called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy Called")
+    fun printDescription() {
+        println("$title, performed by $artist, was released in $yearPublished.")
     }
 }
 
 
-fun determineDessertToShow(
-    desserts: List<Dessert>,
-    dessertsSold: Int
-): Dessert {
-    var dessertToShow = desserts.first()
-    for (dessert in desserts) {
-        if (dessertsSold >= dessert.startProductionAmount) {
-            dessertToShow = dessert
-        } else {
+//practis 2
+//fun main() {
+//    val amanda = Person("Amanda", 33, "play tennis", null)
+//    val atiqah = Person("Atiqah", 28, "climb", amanda)
+//
+//    amanda.showProfile()
+//    atiqah.showProfile()
+//}
+//
+//
+//class Person(val name: String, val age: Int, val hobby: String?, val referrer: Person?) {
+//    fun showProfile() {
+//        println("Name: $name")
+//        println("Age: $age")
+//        if(hobby != null) {
+//            print("Likes to $hobby. ")
+//        }
+//        if(referrer != null) {
+//            print("Has a referrer named ${referrer.name}")
+//            if(referrer.hobby != null) {
+//                print(", who likes to ${referrer.hobby}.")
+//            } else {
+//                print(".")
+//            }
+//        } else {
+//            print("Doesn't have a referrer.")
+//        }
+//        print("\n\n")
+//    }
+//}
 
-            break
-        }
-    }
 
-    return dessertToShow
-}
 
-private fun shareSoldDessertsInformation(intentContext: Context, dessertsSold: Int, revenue: Int) {
-    val sendIntent = Intent().apply {
-        action = Intent.ACTION_SEND
-        putExtra(
-            Intent.EXTRA_TEXT,
-            intentContext.getString(R.string.share_text, dessertsSold, revenue)
-        )
-        type = "text/plain"
-    }
 
-    val shareIntent = Intent.createChooser(sendIntent, null)
+/////practis 3
+//open class Phone(var isScreenLightOn: Boolean = false){
+//    open fun switchOn() {
+//        isScreenLightOn = true
+//    }
+//
+//    fun switchOff() {
+//        isScreenLightOn = false
+//    }
+//
+//    fun checkPhoneScreenLight() {
+//        val phoneScreenLight = if (isScreenLightOn) "on" else "off"
+//        println("The phone screen's light is $phoneScreenLight.")
+//    }
+//}
+//
+//class FoldablePhone(var isFolded: Boolean = true): Phone() {
+//    override fun switchOn() {
+//        if (!isFolded) {
+//            isScreenLightOn = true
+//        }
+//    }
+//
+//    fun fold() {
+//        isFolded = true
+//    }
+//
+//    fun unfold() {
+//        isFolded = false
+//    }
+//}
+//
+//fun main() {
+//    val newFoldablePhone = FoldablePhone()
+//
+//    newFoldablePhone.switchOn()
+//    newFoldablePhone.checkPhoneScreenLight()
+//    newFoldablePhone.unfold()
+//    newFoldablePhone.switchOn()
+//    newFoldablePhone.checkPhoneScreenLight()
+//}
 
-    try {
-        ContextCompat.startActivity(intentContext, shareIntent, null)
-    } catch (e: ActivityNotFoundException) {
-        Toast.makeText(
-            intentContext,
-            intentContext.getString(R.string.sharing_not_available),
-            Toast.LENGTH_LONG
-        ).show()
-    }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun DessertClickerApp(
-    desserts: List<Dessert>
-) {
+/////practis 4
+//fun main() {
+//    val winningBid = Bid(5000, "Private Collector")
+//
+//    println("Item A is sold at ${auctionPrice(winningBid, 2000)}.")
+//    println("Item B is sold at ${auctionPrice(null, 3000)}.")
+//}
+//
+//class Bid(val amount: Int, val bidder: String)
+//
+//fun auctionPrice(bid: Bid?, minimumPrice: Int): Int {
+//    return bid?.amount ?: minimumPrice
+//}
 
-    var revenue by rememberSaveable { mutableStateOf(0) }
-    var dessertsSold by rememberSaveable { mutableStateOf(0) }
 
-    val currentDessertIndex by rememberSaveable { mutableStateOf(0) }
-
-    var currentDessertPrice by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].price)
-    }
-    var currentDessertImageId by rememberSaveable {
-        mutableStateOf(desserts[currentDessertIndex].imageId)
-    }
-
-    Scaffold(
-        topBar = {
-            val intentContext = LocalContext.current
-            DessertClickerAppBar(
-                onShareButtonClicked = {
-                    shareSoldDessertsInformation(
-                        intentContext = intentContext,
-                        dessertsSold = dessertsSold,
-                        revenue = revenue
-                    )
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.primary)
-            )
-        }
-    ) { contentPadding ->
-        DessertClickerScreen(
-            revenue = revenue,
-            dessertsSold = dessertsSold,
-            dessertImageId = currentDessertImageId,
-            onDessertClicked = {
-
-                // Update the revenue
-                revenue += currentDessertPrice
-                dessertsSold++
-
-                // Show the next dessert
-                val dessertToShow = determineDessertToShow(desserts, dessertsSold)
-                currentDessertImageId = dessertToShow.imageId
-                currentDessertPrice = dessertToShow.price
-            },
-            modifier = Modifier.padding(contentPadding)
-        )
-    }
-}
-
-@Composable
-private fun DessertClickerAppBar(
-    onShareButtonClicked: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = stringResource(R.string.app_name),
-            modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_medium)),
-            color = MaterialTheme.colorScheme.onPrimary,
-            style = MaterialTheme.typography.titleLarge,
-        )
-        IconButton(
-            onClick = onShareButtonClicked,
-            modifier = Modifier.padding(end = dimensionResource(R.dimen.padding_medium)),
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Share,
-                contentDescription = stringResource(R.string.share),
-                tint = MaterialTheme.colorScheme.onPrimary
-            )
-        }
-    }
-}
-
-@Composable
-fun DessertClickerScreen(
-    revenue: Int,
-    dessertsSold: Int,
-    @DrawableRes dessertImageId: Int,
-    onDessertClicked: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(modifier = modifier) {
-        Image(
-            painter = painterResource(R.drawable.bakery_back),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
-        Column {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth(),
-            ) {
-                Image(
-                    painter = painterResource(dessertImageId),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .width(dimensionResource(R.dimen.image_size))
-                        .height(dimensionResource(R.dimen.image_size))
-                        .align(Alignment.Center)
-                        .clickable { onDessertClicked() },
-                    contentScale = ContentScale.Crop,
-                )
-            }
-            TransactionInfo(
-                revenue = revenue,
-                dessertsSold = dessertsSold,
-                modifier = Modifier.background(MaterialTheme.colorScheme.secondaryContainer)
-            )
-        }
-    }
-}
-
-@Composable
-private fun TransactionInfo(
-    revenue: Int,
-    dessertsSold: Int,
-    modifier: Modifier = Modifier
-) {
-    Column(modifier = modifier) {
-        DessertsSoldInfo(
-            dessertsSold = dessertsSold,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_medium))
-        )
-        RevenueInfo(
-            revenue = revenue,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_medium))
-        )
-    }
-}
-
-@Composable
-private fun RevenueInfo(revenue: Int, modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Text(
-            text = stringResource(R.string.total_revenue),
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
-        Text(
-            text = "$${revenue}",
-            textAlign = TextAlign.Right,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
-    }
-}
-
-@Composable
-private fun DessertsSoldInfo(dessertsSold: Int, modifier: Modifier = Modifier) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Text(
-            text = stringResource(R.string.dessert_sold),
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
-        Text(
-            text = dessertsSold.toString(),
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
-    }
-}
-
-@Preview
-@Composable
-fun MyDessertClickerAppPreview() {
-    DessertClickerTheme {
-        DessertClickerApp(listOf(Dessert(R.drawable.cupcake, 5, 0)))
-    }
-}
+///*
+// * Copyright (C) 2023 The Android Open Source Project
+// *
+// * Licensed under the Apache License, Version 2.0 (the "License");
+// * you may not use this file except in compliance with the License.
+// * You may obtain a copy of the License at
+// *
+// *      https://www.apache.org/licenses/LICENSE-2.0
+// *
+// * Unless required by applicable law or agreed to in writing, software
+// * distributed under the License is distributed on an "AS IS" BASIS,
+// * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// * See the License for the specific language governing permissions and
+// * limitations under the License.
+// */
+//package com.example.labs
+//
+//import android.os.Bundle
+//import androidx.activity.ComponentActivity
+//import androidx.activity.compose.setContent
+//import androidx.annotation.DrawableRes
+//import androidx.annotation.StringRes
+//import androidx.compose.foundation.layout.Arrangement
+//import androidx.compose.foundation.layout.Column
+//import androidx.compose.foundation.layout.Row
+//import androidx.compose.foundation.layout.Spacer
+//import androidx.compose.foundation.layout.fillMaxSize
+//import androidx.compose.foundation.layout.fillMaxWidth
+//import androidx.compose.foundation.layout.height
+//import androidx.compose.foundation.layout.padding
+//import androidx.compose.foundation.layout.size
+//import androidx.compose.foundation.layout.safeDrawingPadding
+//import androidx.compose.foundation.layout.statusBarsPadding
+//import androidx.compose.foundation.layout.wrapContentWidth
+//import androidx.compose.foundation.rememberScrollState
+//import androidx.compose.foundation.text.KeyboardOptions
+//import androidx.compose.foundation.verticalScroll
+//import androidx.compose.material3.ExperimentalMaterial3Api
+//import androidx.compose.material3.Icon
+//import androidx.compose.material3.MaterialTheme
+//import androidx.compose.material3.Surface
+//import androidx.compose.material3.Switch
+//import androidx.compose.material3.Text
+//import androidx.compose.material3.TextField
+//import androidx.compose.runtime.Composable
+//import androidx.compose.runtime.getValue
+//import androidx.compose.runtime.mutableStateOf
+//import androidx.compose.runtime.remember
+//import androidx.compose.runtime.setValue
+//import androidx.compose.ui.Alignment
+//import androidx.compose.ui.Modifier
+//import androidx.compose.ui.res.painterResource
+//import androidx.compose.ui.res.stringResource
+//import androidx.compose.ui.text.input.ImeAction
+//import androidx.compose.ui.text.input.KeyboardType
+//import androidx.compose.ui.tooling.preview.Preview
+//import androidx.compose.ui.unit.dp
+//import com.example.labs.ui.theme.TipTimeTheme
+//import java.text.NumberFormat
+//import kotlin.math.ceil
+//
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContent {
+//            TipTimeTheme {
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                ) {
+//                    TipTimeLayout()
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//@Composable
+//fun TipTimeLayout() {
+//    var amountInput by remember { mutableStateOf("") }
+//    var tipInput by remember { mutableStateOf("") }
+//    var roundUp by remember { mutableStateOf(false) }
+//
+//    val amount = amountInput.toDoubleOrNull() ?: 0.0
+//    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+//    val tip = calculateTip(amount, tipPercent, roundUp)
+//
+//    Column(
+//        modifier = Modifier
+//            .statusBarsPadding()
+//            .padding(horizontal = 40.dp)
+//            .verticalScroll(rememberScrollState())
+//            .safeDrawingPadding(),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Center
+//    ) {
+//        Text(
+//            text = stringResource(R.string.calculate_tip),
+//            modifier = Modifier
+//                .padding(bottom = 16.dp, top = 40.dp)
+//                .align(alignment = Alignment.Start)
+//        )
+//        EditNumberField(
+//            label = R.string.bill_amount,
+//            leadingIcon = R.drawable.money,
+//            keyboardOptions = KeyboardOptions.Default.copy(
+//                keyboardType = KeyboardType.Number,
+//                imeAction = ImeAction.Next
+//            ),
+//            value = amountInput,
+//            onValueChanged = { amountInput = it },
+//            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+//        )
+//        EditNumberField(
+//            label = R.string.how_was_the_service,
+//            leadingIcon = R.drawable.percent,
+//            keyboardOptions = KeyboardOptions.Default.copy(
+//                keyboardType = KeyboardType.Number,
+//                imeAction = ImeAction.Done
+//            ),
+//            value = tipInput,
+//            onValueChanged = { tipInput = it },
+//            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+//        )
+//        RoundTheTipRow(
+//            roundUp = roundUp,
+//            onRoundUpChanged = { roundUp = it },
+//            modifier = Modifier.padding(bottom = 32.dp)
+//        )
+//        Text(
+//            text = stringResource(R.string.tip_amount, tip),
+//            style = MaterialTheme.typography.displaySmall
+//        )
+//        Spacer(modifier = Modifier.height(150.dp))
+//    }
+//}
+//
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun EditNumberField(
+//    @StringRes label: Int,
+//    @DrawableRes leadingIcon: Int,
+//    keyboardOptions: KeyboardOptions,
+//    value: String,
+//    onValueChanged: (String) -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    TextField(
+//        value = value,
+//        singleLine = true,
+//        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
+//        modifier = modifier,
+//        onValueChange = onValueChanged,
+//        label = { Text(stringResource(label)) },
+//        keyboardOptions = keyboardOptions
+//    )
+//}
+//
+//@Composable
+//fun RoundTheTipRow(
+//    roundUp: Boolean,
+//    onRoundUpChanged: (Boolean) -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    Row(
+//        modifier = modifier
+//            .fillMaxWidth()
+//            .size(48.dp),
+//        verticalAlignment = Alignment.CenterVertically
+//    ) {
+//        Text(text = stringResource(R.string.round_up_tip))
+//        Switch(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .wrapContentWidth(Alignment.End),
+//            checked = roundUp,
+//            onCheckedChange = onRoundUpChanged
+//        )
+//    }
+//}
+//
+//
+//private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boolean): String {
+//    var tip = tipPercent / 100 * amount
+//    if (roundUp) {
+//        tip = ceil(tip)
+//    }
+//    return NumberFormat.getCurrencyInstance().format(tip)
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun TipTimeLayoutPreview() {
+//    TipTimeTheme {
+//        TipTimeLayout()
+//    }
+//}
