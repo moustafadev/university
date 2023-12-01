@@ -6,6 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,10 +32,19 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -44,6 +56,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -59,6 +72,9 @@ import com.example.labs.model.Topic
 import com.example.labs.ui.theme.AffirmationsTheme
 import com.example.labs.ui.theme.CoursesTheme
 import com.example.labs.ui.theme.TipTimeTheme
+import com.example.labs.ui.theme.WoofTheme
+import com.example.woof.data.Dog
+import com.example.woof.data.dogs
 import java.text.NumberFormat
 import kotlin.math.ceil
 
@@ -67,19 +83,28 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            setContent {
-                CoursesTheme {
-                    // A surface container using the 'background' color from the theme
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.background
-                    ) {
-                        TopicGrid(
-                            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                        )
-                    }
+            WoofTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    WoofApp()
                 }
             }
+
+//            setContent {
+//                CoursesTheme {
+//                    // A surface container using the 'background' color from the theme
+//                    Surface(
+//                        modifier = Modifier.fillMaxSize(),
+//                        color = MaterialTheme.colorScheme.background
+//                    ) {
+//                        TopicGrid(
+//                            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+//                        )
+//                    }
+//                }
+//            }
             /////Scroll
 //            AffirmationsTheme {
 //                // A surface container using the 'background' color from the theme
@@ -112,6 +137,7 @@ class MainActivity : ComponentActivity() {
 /**
  * Composable that displays an app bar and a list of dogs.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofApp() {
     Scaffold(
@@ -200,7 +226,7 @@ private fun DogItemButton(
         modifier = modifier
     ) {
         Icon(
-            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            imageVector = if (expanded) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
             contentDescription = stringResource(R.string.expand_button_content_description),
             tint = MaterialTheme.colorScheme.secondary
         )
@@ -212,6 +238,7 @@ private fun DogItemButton(
  *
  * @param modifier modifiers to set to this composable
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofTopAppBar(modifier: Modifier = Modifier) {
     CenterAlignedTopAppBar(
