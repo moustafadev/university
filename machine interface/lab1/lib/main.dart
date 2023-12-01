@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab1/translate_screen.dart';
 
 import 'app.dart';
 import 'home.dart';
@@ -9,15 +10,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomeScreen() //const HomeScreen(),//TranslateScreen()
+        );
   }
 }

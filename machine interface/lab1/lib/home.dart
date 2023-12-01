@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:lab1/app.dart';
+import 'package:lab1/screen/menu_with_number.dart';
 
 import 'menu_cli.dart';
 
@@ -39,6 +40,23 @@ class HomeScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (BuildContext context) => const MenuCLI(),
+                  ),
+                );
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                child: Text('Menu GUI'),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const MenuWithNumber(),
                   ),
                 );
               },

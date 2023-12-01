@@ -73,6 +73,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  firebase_core:
+    dependency: "direct dev"
+    description:
+      name: firebase_core
+      sha256: "45f3f9babfc6f56fb94c3cd11584cf3c9672868228373b699b94427010e01dc3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.22.0"
+  firebase_core_platform_interface:
+    dependency: "direct overridden"
+    description:
+      name: firebase_core_platform_interface
+      sha256: ae79f335f6c7f2dadb00c98c429da2ca905d265e0225fb5e7dfa62ac3accad48
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.7.0"
+  firebase_core_web:
+    dependency: transitive
+    description:
+      name: firebase_core_web
+      sha256: "0631a2ec971dbc540275e2fa00c3a8a2676f0a7adbc3c197d6fba569db689d97"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.8.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -91,6 +115,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  google_mlkit_commons:
+    dependency: transitive
+    description:
+      name: google_mlkit_commons
+      sha256: "046586b381cdd139f7f6a05ad6998f7e339d061bd70158249907358394b5f496"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.1"
+  google_mlkit_translation:
+    dependency: "direct dev"
+    description:
+      name: google_mlkit_translation
+      sha256: b8f9c3de545f54ed5285e4a57b205d84a912c26003705a9f1eec2a40fc8a5471
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0"
   js:
     dependency: transitive
     description:

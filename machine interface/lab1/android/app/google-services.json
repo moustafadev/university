@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "352051064549",
+    "project_id": "labs-eae29",
+    "storage_bucket": "labs-eae29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352051064549:android:723b8360caf199b8ffee0c",
+        "android_client_info": {
+          "package_name": "com.example.lab1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLRXqQrjWaRT9aMShFXOMx543m7Zy9gk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

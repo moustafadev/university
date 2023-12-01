@@ -455,7 +455,6 @@ class _AppState extends State<App> {
                     style: const TextStyle(color: Colors.black, fontSize: 18),
                   );
                 } else if (args.length == 1) {
-                  print(" Implement 'cd' to show the current directory");
                   return Text(
                     currPath,
                     style: const TextStyle(color: Colors.black, fontSize: 18),
@@ -466,7 +465,7 @@ class _AppState extends State<App> {
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   );
                 }
-              } else if (command == 'hlpe') {
+              } else if (command == 'help') {
                 return const Text(
                   hlpe,
                   style: TextStyle(color: Colors.black, fontSize: 18),
