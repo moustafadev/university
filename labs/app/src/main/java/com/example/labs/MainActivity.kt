@@ -70,9 +70,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.labs.data.Datasource
 import com.example.labs.model.Affirmation
+import com.example.labs.model.HeroesRepository
 import com.example.labs.model.Topic
 import com.example.labs.ui.theme.AffirmationsTheme
 import com.example.labs.ui.theme.CoursesTheme
+import com.example.labs.ui.theme.SuperheroesTheme
 import com.example.labs.ui.theme.TipTimeTheme
 import com.example.labs.ui.theme.WoofTheme
 import com.example.woof.data.Dog
@@ -84,15 +86,26 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-            WoofTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    WoofApp()
+            setContent {
+                SuperheroesTheme {
+                    // A surface container using the 'background' color from the theme
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        SuperheroesApp()
+                    }
                 }
             }
+
+//            WoofTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize()
+//                ) {
+//                    WoofApp()
+//                }
+//            }
 
 //            setContent {
 //                CoursesTheme {
@@ -135,7 +148,50 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SuperheroesApp() {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar()
+        }
+    ) {
+        /* Important: It is not a good practice to access data source directly from the UI.
+        In later units you will learn how to use ViewModel in such scenarios that takes the
+        data source as a dependency and exposes heroes.
+         */
+        val heroes = HeroesRepository.heroes
+        HeroesList(heroes = heroes, contentPadding = it)
+    }
+}
 
+/**
+ * Composable that displays a Top Bar with an icon and text.
+ *
+ * @param modifier modifiers to set to this composable
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopAppBar(modifier: Modifier = Modifier) {
+    CenterAlignedTopAppBar(
+        title = {
+            Text(
+                text = stringResource(R.string.app_name),
+                style = MaterialTheme.typography.displayLarge,
+            )
+        },
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SuperHeroesPreview() {
+    SuperheroesTheme {
+        SuperheroesApp()
+    }
+}
 /**
  * Composable that displays an app bar and a list of dogs.
  */
