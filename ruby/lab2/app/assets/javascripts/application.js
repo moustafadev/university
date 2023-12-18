@@ -1,0 +1,7 @@
+//= require jquery
+//= require jquery-ui
+//= require bootstrap-sprockets
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .

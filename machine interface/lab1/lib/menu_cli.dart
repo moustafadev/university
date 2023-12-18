@@ -24,7 +24,7 @@ class _MenuCLIState extends State<MenuCLI> {
     final Directory _appDocDir = await getApplicationDocumentsDirectory();
     final Directory _appDocDirFolder =
         Directory('${_appDocDir.path}/$folderName/');
-
+    print(_appDocDir);
     if (await _appDocDirFolder.exists()) {
       return _appDocDirFolder.path;
     } else {
@@ -115,6 +115,7 @@ class _MenuCLIState extends State<MenuCLI> {
   late List<FileSystemEntity> _folders;
   Future<void> getDir() async {
     final directory = await getApplicationDocumentsDirectory();
+
     final dir = directory.path;
     currPath = dir;
     String pdfDirectory = '$dir/';

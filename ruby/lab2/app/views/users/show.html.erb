@@ -1,8 +1,11 @@
 <p style="color: green"><%= notice %></p>
-
+<% flash.each do |key, message| %>
+  <div class="alert alert-<%= key %>"><%= message %></div>
+<% end %>
 <%= render @user %>
 
 <div>
+
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
 

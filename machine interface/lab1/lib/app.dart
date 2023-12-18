@@ -125,7 +125,7 @@ class _AppState extends State<App> {
       _folders = folders
           .where((element) => element.path.split('/').last.contains("."))
           .toList();
-      print('dfdfg');
+      print('dfdfg$directory');
     });
     // print(_files);
   }
